@@ -6,10 +6,10 @@ router.get('/ninjas', function(req, res) {
     res.send({type: 'GET'});
 });
 
-router.post('/ninjas', function(req, res) {
+router.post('/ninjas', function(req, res, next) {
     Ninja.create(req.body).then(function(ninja) {    
         res.send(ninja);
-    });
+    }).catch(next);
 })
 
 module.exports = router;
